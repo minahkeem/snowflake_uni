@@ -6,10 +6,16 @@ import snowflake.connector
 st.header("Zena's Amazing Athleisure Catalog")
 
 conn = snowflake.connector.connect(**st.secrets["snowflake"])
-cur = conn.cursor()
-cur.execute("SELECT * FROM CATALOG_FOR_WEBSITE")
-catalog_table = cur.fetchall()
-conn.close()
+
+
+@st.experimental_memo(ttl=600)
+def run_query(query):
+  with conn.cursor() as cur:
+    cur.execute(query)
+    return cur.fetchall()
+  
+
+catalog_table = run_query("select * from catalog_for_website")
 df = pd.DataFrame(catalog_table)
 st.write(df)
 
