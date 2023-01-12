@@ -9,6 +9,7 @@ conn = snowflake.connector.connect(**st.secrets["snowflake"])
 cur = conn.cursor()
 cur.execute("SELECT * FROM CATALOG_FOR_WEBSITE")
 catalog_table = cur.fetchall()
+conn.close()
 df = pd.DataFrame(catalog_table)
 st.write(df)
 
