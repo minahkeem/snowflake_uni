@@ -22,10 +22,10 @@ df = pd.DataFrame(colors_column)
 colors = df[0].values.tolist()
 #st.write(colors)
 
-color_options = st.selectbox("Pick a sweatsuit color or style:", list(colors))
+color_option = st.selectbox("Pick a sweatsuit color or style:", list(colors))
 
-product_caption = 'Our warm, comfortable, ' + option + ' sweatsuit!'
-catalog_table = run_query("select direct_url, price, size_list, upsell_product_desc from catalog_for_website where color_or_style = '"+option+"';")
+product_caption = 'Our warm, comfortable, ' + color_option + ' sweatsuit!'
+catalog_table = run_query("select direct_url, price, size_list, upsell_product_desc from catalog_for_website where color_or_style = '"+color_option+"';")
 df2 = pd.DataFrame(catalog_table)
 
 streamlit.image(df2[0],
