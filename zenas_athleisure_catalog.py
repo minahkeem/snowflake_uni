@@ -13,4 +13,6 @@ df = pd.DataFrame(catalog_table)
 st.write(df)
 
 colors = df[0].values.tolist()
-st.write(colors)
+#st.write(colors)
+
+color_options = st.selectbox("Pick a sweatsuit color or style:", list(colors))
