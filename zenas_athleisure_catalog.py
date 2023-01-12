@@ -13,4 +13,4 @@ df = pd.DataFrame(catalog_table)
 st.write(df)
 
 colors = df[0].values.tolist()
-print(colors)
+st.write(colors)
