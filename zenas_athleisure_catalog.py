@@ -29,11 +29,11 @@ catalog_table = run_query("select direct_url, price, size_list, upsell_product_d
 df2 = pd.DataFrame(catalog_table)
 st.write(df2)
 
-streamlit.image(df2[0],
+streamlit.image(df2[0][0],
                 width = 400,
                 caption = product_caption
                )
 
-streamlit.write('Price: ', df2[1])
-streamlit.write('Sizes available: ', df2[2])
-streamlit.write(df2[3])
+streamlit.write('Price: ', df2[1][0])
+streamlit.write('Sizes available: ', df2[2][0])
+streamlit.write(df2[3][0])
