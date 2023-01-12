@@ -25,15 +25,15 @@ colors = df[0].values.tolist()
 color_option = st.selectbox("Pick a sweatsuit color or style:", list(colors))
 
 product_caption = 'Our warm, comfortable, ' + color_option + ' sweatsuit!'
-catalog_table = run_query("select direct_url, price, size_list, upsell_product_desc from catalog_for_website where color_or_style = '"+color_option+"';")
-df2 = pd.DataFrame(catalog_table)
+df2 = run_query("select direct_url, price, size_list, upsell_product_desc from catalog_for_website where color_or_style = '"+color_option+"';")
+#df2 = pd.DataFrame(catalog_table)
 st.write(df2)
 
-streamlit.image(df2[0][0],
+streamlit.image(df2[0],
                 width = 400,
                 caption = product_caption
                )
 
-streamlit.write('Price: ', df2[1][0])
-streamlit.write('Sizes available: ', df2[2][0])
-streamlit.write(df2[3][0])
+streamlit.write('Price: ', df2[1])
+streamlit.write('Sizes available: ', df2[2])
+streamlit.write(df2[3])
